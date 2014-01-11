@@ -1,0 +1,10 @@
+author: PixelEater
+database: true
+description: Votifier plugin for allowing players to accumulate vote tokens to choose
+  their own rewards.
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: com.github.bradreardon.votetokens.VoteTokens
+name: VoteTokens
+startup: postworld
+version: 0.1-SNAPSHOT
+depends: [Votifier]
