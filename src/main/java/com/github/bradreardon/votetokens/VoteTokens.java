@@ -1,22 +1,45 @@
 package com.github.bradreardon.votetokens;
 
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
+import com.github.bradreardon.votetokens.database.Log;
+import com.github.bradreardon.votetokens.database.Player;
+import com.github.bradreardon.votetokens.database.Reward;
+import com.github.bradreardon.votetokens.listeners.VoteListener;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import javax.persistence.PersistenceException;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class VoteTokens extends JavaPlugin implements Listener {
-    public void onDisable() {
-        // TODO: Place any custom disable code here.
-    }
+public class VoteTokens extends JavaPlugin {
+    
+    private static VoteListener voteListener;
 
     public void onEnable() {
-        getServer().getPluginManager().registerEvents(this, this);
+        initDB();
+        voteListener = new VoteListener(this);
+        getLogger().info("Now listening to Votifier events.");
     }
-
-    @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
-        event.getPlayer().sendMessage("Welcome, " + event.getPlayer().getDisplayName() + "!");
+    
+    public void onDisable() {
+        voteListener = null;
+    }
+    
+    private void initDB() {
+        try {
+            getDatabase().find(Log.class).findRowCount();
+            getDatabase().find(Player.class).findRowCount();
+            getDatabase().find(Reward.class).findRowCount();
+        } catch(PersistenceException ex) {
+            getLogger().log(Level.INFO, "Initializing database tables.");
+            installDDL();
+        }
+    }
+    
+    public ArrayList<Class<?>> getDatabaseClasses() {
+        ArrayList<Class<?>> dbClasses = new ArrayList();
+        dbClasses.add(Log.class);
+        dbClasses.add(Player.class);
+        dbClasses.add(Reward.class);
+        return dbClasses;
     }
 }
 
