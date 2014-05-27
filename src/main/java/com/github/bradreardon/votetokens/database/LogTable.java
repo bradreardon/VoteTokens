@@ -6,10 +6,22 @@
 
 package com.github.bradreardon.votetokens.database;
 
+import com.github.bradreardon.votetokens.VoteTokens;
+
 /**
  *
  * @author Brad Reardon <brad.jay.reardon@gmail.com>
  */
 public class LogTable {
+    
+    private final VoteTokens plugin;
+    
+    public LogTable(VoteTokens plugin) {
+        this.plugin = plugin;
+    }
+    
+    public void save(Log log) {
+        plugin.getDatabase().save(log);
+    }
     
 }

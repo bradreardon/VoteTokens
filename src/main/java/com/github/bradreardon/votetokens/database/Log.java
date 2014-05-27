@@ -7,9 +7,11 @@
 package com.github.bradreardon.votetokens.database;
 
 import com.avaje.ebean.validation.NotNull;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -24,7 +26,10 @@ public class Log {
     private int id;
     
     @NotNull
-    private int player;
+    private String player;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date logDate;
     
     @NotNull
     private String logType;
@@ -40,12 +45,20 @@ public class Log {
         this.id = id;
     }
 
-    public int getPlayer() {
+    public String getPlayer() {
         return player;
     }
 
-    public void setPlayer(int player) {
+    public void setPlayer(String player) {
         this.player = player;
+    }
+
+    public Date getLogDate() {
+        return logDate;
+    }
+
+    public void setLogDate(Date logDate) {
+        this.logDate = logDate;
     }
 
     public String getLogType() {

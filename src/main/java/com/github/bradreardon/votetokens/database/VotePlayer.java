@@ -20,13 +20,13 @@ import javax.persistence.Table;
 
 @Entity()
 @Table(name = "vt_players")
-public class Player {
+public class VotePlayer {
     
     @Id
     private int id;
     
     @NotNull
-    private int player;
+    private String player;
     
     @NotNull
     private int tokens;
@@ -39,11 +39,11 @@ public class Player {
         this.id = id;
     }
 
-    public int getPlayer() {
+    public String getPlayer() {
         return player;
     }
 
-    public void setPlayer(int player) {
+    public void setPlayer(String player) {
         this.player = player;
     }
 
@@ -53,6 +53,5 @@ public class Player {
 
     public void setTokens(int tokens) {
         this.tokens = tokens;
-    }
-    
+    }    
 }

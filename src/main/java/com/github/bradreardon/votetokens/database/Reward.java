@@ -10,6 +10,8 @@ import com.avaje.ebean.validation.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 /**
  *
@@ -27,10 +29,13 @@ public class Reward {
     private String name;
     
     @NotNull
-    private String itemId;
+    private String itemName;
     
     @NotNull
-    private String itemAmt;
+    private int itemAmt;
+    
+    @NotNull
+    private int cost;
 
     public int getId() {
         return id;
@@ -48,20 +53,32 @@ public class Reward {
         this.name = name;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
     }
 
-    public String getItemAmt() {
+    public int getItemAmt() {
         return itemAmt;
     }
 
-    public void setItemAmt(String itemAmt) {
+    public void setItemAmt(int itemAmt) {
         this.itemAmt = itemAmt;
+    }
+
+    public int getCost() {
+        return cost;
+    }
+
+    public void setCost(int cost) {
+        this.cost = cost;
+    }
+    
+    public ItemStack getItemStack() {
+        return new ItemStack(Material.getMaterial(getItemName()), getItemAmt());
     }
     
 }

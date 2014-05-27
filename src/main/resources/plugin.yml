@@ -8,3 +8,7 @@ name: VoteTokens
 startup: postworld
 version: 0.1-SNAPSHOT
 depends: [Votifier]
+commands:
+  vt:
+    description: Vote token related operations.
+    usage: /vt
