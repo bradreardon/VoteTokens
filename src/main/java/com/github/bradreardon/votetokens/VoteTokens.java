@@ -50,7 +50,7 @@ public class VoteTokens extends JavaPlugin {
                 sender.sendMessage("This command can only be run by a player.");
             } else {
                 Player player = (Player) sender;
-                VotePlayer vp = playerTable.getPlayer(player.getName());
+                VotePlayer vp = playerTable.getPlayer(player.getUniqueId().toString());
                 
                 if(args.length == 0) {
                     player.sendMessage("§6§lYou currently have: §r" + vp.getTokens() + " Vote Tokens.");
@@ -101,6 +101,7 @@ public class VoteTokens extends JavaPlugin {
                     log.setLogType("purchase");
                     log.setLogDate(new Date());
                     log.setPlayer(player.getName());
+                    log.setUuid(player.getUniqueId().toString());
                     log.setLogText(r.getName());
                     logTable.save(log);
                     

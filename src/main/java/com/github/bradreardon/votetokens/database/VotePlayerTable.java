@@ -20,11 +20,11 @@ public class VotePlayerTable {
         this.plugin = plugin;
     }
     
-    public VotePlayer getPlayer(String username) {
-        VotePlayer vp = plugin.getDatabase().find(VotePlayer.class).where().ieq("player", username).query().findUnique();
+    public VotePlayer getPlayer(String uuid) {
+        VotePlayer vp = plugin.getDatabase().find(VotePlayer.class).where().ieq("uuid", uuid).query().findUnique();
         if (vp == null) {
             vp = new VotePlayer();
-            vp.setPlayer(username);
+            vp.setUuid(uuid);
             vp.setTokens(0);
             save(vp);
             return vp;

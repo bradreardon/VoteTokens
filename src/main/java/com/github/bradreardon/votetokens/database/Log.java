@@ -28,6 +28,9 @@ public class Log {
     @NotNull
     private String player;
     
+    @NotNull
+    private String uuid;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date logDate;
     
@@ -51,6 +54,14 @@ public class Log {
 
     public void setPlayer(String player) {
         this.player = player;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public Date getLogDate() {

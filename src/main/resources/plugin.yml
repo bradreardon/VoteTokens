@@ -6,7 +6,7 @@ generator: http://dinnerbone.com/minecraft/tools/pluginator/
 main: com.github.bradreardon.votetokens.VoteTokens
 name: VoteTokens
 startup: postworld
-version: 0.1-SNAPSHOT
+version: 0.2-SNAPSHOT
 depends: [Votifier]
 commands:
   vt:

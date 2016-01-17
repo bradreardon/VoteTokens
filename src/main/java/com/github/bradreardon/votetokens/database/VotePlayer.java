@@ -26,7 +26,7 @@ public class VotePlayer {
     private int id;
     
     @NotNull
-    private String player;
+    private String uuid;
     
     @NotNull
     private int tokens;
@@ -39,12 +39,12 @@ public class VotePlayer {
         this.id = id;
     }
 
-    public String getPlayer() {
-        return player;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setPlayer(String player) {
-        this.player = player;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public int getTokens() {
